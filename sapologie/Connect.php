@@ -1,6 +1,14 @@
 <?php
 class Connect extends Config
 {
+
+    /**
+     * @param $server
+     * @param $db
+     * @param $charset
+     * @param $user
+     * @param $password
+     */
     public function __construct($server, $db, $charset, $user, $password)
     {
         try {

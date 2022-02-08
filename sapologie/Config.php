@@ -6,6 +6,5 @@ class Config
     private static string $password;
     private static string $db;
     private static string $charset;
-    private static int $date;
 
 }
