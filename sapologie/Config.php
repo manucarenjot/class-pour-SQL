@@ -7,4 +7,5 @@ class Config
     private static string $db;
     private static string $charset;
 
+
 }

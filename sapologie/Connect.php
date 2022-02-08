@@ -10,7 +10,7 @@ class Connect extends Config
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo 'connection effectuée';
         } catch (PDOException $e) {
-            echo "Une erreur est intervenue :" . $e->getMessage();
+            echo "Une erreur est intervenue :" . file_put_contents('PDOerrorlo.txt', $e->getMessage() . "\n",FILE_APPEND);;
         }
 
     }
