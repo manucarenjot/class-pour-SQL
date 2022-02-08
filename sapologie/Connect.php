@@ -12,6 +12,5 @@ class Connect extends Config
             echo "Une erreur est intervenue :" . file_put_contents('PDOerrorlo.txt', $e->getMessage() .
                     "\n",FILE_APPEND);;
         }
-
     }
 }
