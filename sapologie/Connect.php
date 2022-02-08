@@ -1,76 +1,17 @@
 <?php
-class Connect
+class Connect extends Config
 {
-    private string $server;
-    private string $user;
-    private string $password;
-    private string $db;
 
-    /**
-     * @return string
-     */
-    public function getServer(): string
+    public function __construct($server, $db, $charset, $user, $password)
     {
-        return $this->server;
-    }
+        try {
 
-    /**
-     * @param string $server
-     * @return Connect
-     */
-    public function setServer(string $server): Connect
-    {
-        $this->server = $server;
-        return $this;
-    }
+            $this->pdo = new PDO("mysql:host={$server};dbname={$db};charset={$charset}", $user, $password);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo 'connection effectuée';
+        } catch (PDOException $e) {
+            echo "Une erreur est intervenue :" . $e->getMessage();
+        }
 
-    /**
-     * @return string
-     */
-    public function getUser(): string
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param string $user
-     * @return Connect
-     */
-    public function setUser(string $user): Connect
-    {
-        $this->user = $user;
-        return $this;
-    }
-
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): Connect
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDb(): string
-    {
-        return $this->db;
-    }
-
-    /**
-     * @param string $db
-     * @return Connect
-     */
-    public function setDb(string $db): Connect
-    {
-        $this->db = $db;
-        return $this;
-    }
-
-    public function __toString(): string {
-        return $this->getDb() . $this->getServer() . $this->getUser();
     }
 }
